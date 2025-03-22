@@ -2,7 +2,7 @@
 
 Zombie::Zombie(){
     std::cout << "A zombie is born."<<std::endl;
-};
+}
 
 Zombie::~Zombie(){
     std::cout << name << " is no longer with us."<<std::endl;
