@@ -2,7 +2,7 @@
 
 Dog::Dog(): Animal("Dog"), brain(new Brain()){
     std::cout << "Default Dog Constructor called" << std::endl;
-    // this->brain = new Brain(); // maybe i should do this in the constructor // same in cat.hpp
+    // this->brain = new Brain(); // maybe i should do this in the constructor
 }
 
 Dog::Dog(const Dog& other) : Animal(other){
