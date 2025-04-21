@@ -26,7 +26,7 @@ void PhoneBook::search_contact(){
     }
     std::cout << "Enter index of contact to view: ";
     int index;
-    std::cin >> index;
+    std::cin >> index; // can add this inside a loop
     std::cin.ignore();
     if(!std::cin)
         return;

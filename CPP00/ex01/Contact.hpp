@@ -1,7 +1,7 @@
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 #include <iostream>
-#include <string>
+#include <string> //is this needed
 #include <iomanip>
 
 class Contact{
@@ -18,6 +18,7 @@ class Contact{
         void display_contact_list(int index);
         bool isvalid_name(const std::string &name);
         bool isvalid_phone_num(const std::string &phone_num);
+        bool isvalid_char(const std::string &nick_name);
 
 };
 #endif
