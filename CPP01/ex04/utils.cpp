@@ -1,16 +1,14 @@
 #include "good.hpp"
 
 std::string readfile(const std::string &filename){
-    std::ifstream inputfile(filename.c_str()); // c_str() converts std::string to const char * cause ifstream constructor takes const char * not string type
+    std::ifstream inputfile(filename.c_str());
     if (!inputfile){
-        std::cout << "Error: could not open file" << std::endl;
-        // return "";
-        exit(1);
+        return "";
     }
     std::string content;
     std::string line;
     while (std::getline(inputfile, line)){
-        content += line + "\n"; // since getline removes the newline character, we add it back
+        content += line + "\n";
     }
     inputfile.close();
     return content;
@@ -26,13 +24,14 @@ void replace(std::string &content, const std::string &s1, const std::string &s2)
     }
 }
 
-void writefile(const std::string &content, const std::string &filename){
+int writefile(const std::string &content, const std::string &filename){
 
     std::ofstream outputfile((filename + ".replace").c_str());
     if (!outputfile){
-        std::cout << "Error: could not create file" << std::endl;
-        exit(1);
+        std::cout << "Error: could not create out file" << std::endl;
+        return 1;
     }
     outputfile << content;
     outputfile.close();
+    return 0;
 }

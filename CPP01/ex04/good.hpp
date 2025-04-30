@@ -7,6 +7,6 @@
 
 std::string readfile(const std::string &filename);
 void replace(std::string &content, const std::string &s1, const std::string &s2);
-void writefile(const std::string &content, const std::string &filename);
+int writefile(const std::string &content, const std::string &filename);
 
 #endif

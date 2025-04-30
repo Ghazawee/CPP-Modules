@@ -2,16 +2,21 @@
 
 HumanB::HumanB(std::string name) : name(name)
 {
-    weapon = NULL; // without it conditional jump or move depends on uninitialised value(s) will occur
+    weapon = NULL;
+    std::cout << "HumanB constructor has been called" << std::endl;
 }
 
 void HumanB::setWeapon(Weapon &weapon){
     this->weapon = &weapon;
 }
 
+HumanB::~HumanB(){
+    std::cout << "HumanB destructor has been called" << std::endl;
+}
+
 void HumanB::attack(){
     if(weapon)
         std::cout << name << " attack with " << weapon->getType() << std::endl;
     else
-        std::cout << name << " has no weapon to attack with." << std::endl; // without if else, segfault if i call attack without initializing the weapon with null
+        std::cout << name << " has no weapon to attack with." << std::endl;
 }

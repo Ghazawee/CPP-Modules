@@ -4,19 +4,19 @@ SRCS = Zombie.cpp zombieHorde.cpp main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-CC = c++
+CXX = c++
 
-CFLAGS = -Wall -Werror -Wextra -std=c++98
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 
 DEL = rm -rf
 
 all: $(NAME)
 
 %.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	$(DEL) $(OBJS)

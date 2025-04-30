@@ -1,10 +1,14 @@
 #include "Weapon.hpp"
 
-Weapon::Weapon(std::string type) : type(type) {} 
+Weapon::Weapon(std::string type) : type(type) {
+    std::cout << "Weapon constructor has been called" << std::endl;
+} 
 
-// Weapon::~Weapon(){}
+Weapon::~Weapon(){
+    std::cout << "Weapon destructor has been called" << std::endl;
+}
 
-const std::string &Weapon::getType(){
+const std::string &Weapon::getType()const{
     return type;
 }
 
