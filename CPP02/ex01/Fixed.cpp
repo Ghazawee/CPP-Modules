@@ -40,7 +40,7 @@ void Fixed::setRawBits(int const raw){
 }
 
 float Fixed::toFloat() const{
-    return (float)this->value/ (1 << fractional_bits);
+    return static_cast<float>(this->value)/ (1 << fractional_bits);
 }
 
 int Fixed::toInt() const{
@@ -50,5 +50,5 @@ int Fixed::toInt() const{
 //operator overload for << to print Fixed object, ex say we have Fixed a, with this we would be able to do std::cout << a; and print the a.value in float
 std::ostream &operator<<(std::ostream &out, const Fixed &Fixed){
     out << Fixed.toFloat();
-    return out;
+    return out; // return the stream to allow chaining // e.g std::cout << a << b;
 }

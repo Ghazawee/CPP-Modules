@@ -21,7 +21,6 @@ Fixed::Fixed(const int val) : value(val << this->fractional_bits){
 }
 
 //we cant bitshift float, so we multiply it by 2^8 to get the fixed point representation and round it to the nearest integer
-// should i proteect against overflow ????? or sssshhhhhh dont tell anyone if you see this message act like you didnt see it
 Fixed::Fixed(const float val) : value(roundf(val * (1 << this->fractional_bits))){
     // std::cout << "Float constructor called" << std::endl;
 }
@@ -86,7 +85,7 @@ Fixed Fixed::operator*(const Fixed &other) const{
 }
 
 Fixed Fixed::operator/(const Fixed &other) const{
-    if(other.toFloat() == 0) // division by zero should i protect it ??
+    if(other.toFloat() == 0)
         return Fixed(0);
     return Fixed(this->toFloat() / other.toFloat());
 }
