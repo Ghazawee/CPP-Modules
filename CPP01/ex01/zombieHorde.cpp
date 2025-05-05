@@ -7,7 +7,6 @@ Zombie* zombieHorde(int N, std::string name){
         std::stringstream ss;
         ss << i + 1;
         zombies[i].set_name(name + "." + ss.str());
-        // zombies[i] = Zombie(name + '.' + std::to_string(i)); //
         i++;
     }
     return zombies;

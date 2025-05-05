@@ -1,16 +1,12 @@
 #include "PhoneBook.hpp"
 
-int main(){
-    // (void)av;
-    // if (ac > 1){
-    //     std::cout << "Usage: ./phonebook" << std::endl;
-    //     return 1;
-    // }
+int main(void){
+
     PhoneBook phonebook;
     std::string command;
     while(true){
         std::cout << "Enter a command (ADD, SEARCH, EXIT): ";
-        if (!std::getline(std::cin, command)) // protect against eof prevent infinite loop
+        if (!std::getline(std::cin, command))
         {
             std::cout << std::endl;
             break;

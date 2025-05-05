@@ -24,16 +24,23 @@ void PhoneBook::search_contact(){
         contact[i].display_contact_list(i);
         i++;
     }
-    std::cout << "Enter index of contact to view: ";
-    int index;
-    std::cin >> index; // can add this inside a loop
+    std::cout << "Enter index of contact to view or exit to return: ";
+    std::string index;
+    std::cin >> index;
     std::cin.ignore();
     if(!std::cin)
         return;
-    if (index >= 0 && index < total_contacts){
-        contact[index].display_contact();
+    if (index == "exit")
+        return;
+    if ((index[0] >= '0' && index[0] <= '7') && index[1] == '\0'){
+        int i = index[0] - '0';
+        if (i < total_contacts)
+            contact[i].display_contact();
+        else{
+            std::cout << "Invalid index, you a bot." << std::endl;
+        }
     }
     else{
-        std::cout << "Invalid index." << std::endl;
+        std::cout << "Invalid entry, you a bot." << std::endl;
     }
 }

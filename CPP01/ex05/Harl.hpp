@@ -9,7 +9,7 @@ class Harl{
         void info();
         void warning();
         void error();
-        void (Harl::*functions[4])(); //::* pointer to a member function of Harl class
+        void (Harl::*functions[4])();
     public:
         Harl();
         ~Harl();

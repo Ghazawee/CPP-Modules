@@ -8,13 +8,12 @@ class HumanB{
 
     private:
         std::string name;
-        // Weapon &weapon;
-        Weapon *weapon; // pointer cant be reference because it is not initialized in initializer list because B can  start without a weapon and reference cant be null so it must be pointer
+        Weapon *weapon;
     
     public:
         HumanB(std::string name);
         void setWeapon(Weapon &weapon);
-        // ~HumanB();
+        ~HumanB();
         void attack();
 };
 
