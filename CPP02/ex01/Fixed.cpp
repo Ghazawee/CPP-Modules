@@ -30,7 +30,7 @@ Fixed::~Fixed(){
 }
 
 int Fixed::getRawBits()const{
-    // std::cout << "getRawBits member function called" << std::endl; // to match subject example
+    std::cout << "getRawBits member function called" << std::endl; // to match subject example
     return this->value;
 }
 

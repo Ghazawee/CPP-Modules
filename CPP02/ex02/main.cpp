@@ -3,15 +3,9 @@
 int main(void) {
     Fixed a;
     Fixed const b( Fixed(5.05f) * Fixed(2) );
-    Fixed c( Fixed(5.05f) / Fixed(0) );
-    Fixed g(3.5f);
-    Fixed s(2.5f);
+    Fixed c( Fixed(5.05f) / Fixed(2.02f) );
 
-    std::cout << "Testing arithmetic operators:" << std::endl;
-    std::cout << g << " + " << s << " = " << (g + s) << std::endl;
-    std::cout << g << " - " << s << " = " << (g - s) << std::endl;
-    std::cout << g << " * " << s << " = " << (g * s) << std::endl;
-    std::cout << g << " / " << s << " = " << (g / s) << std::endl;;
+    
     std::cout << a << std::endl;
     std::cout << ++a << std::endl;
     std::cout << a << std::endl;

@@ -73,21 +73,33 @@ bool Fixed::operator!=(const Fixed &other) const{
 }
 //Arithmetic operators
 Fixed Fixed::operator+(const Fixed &other) const{
-    return Fixed(this->toFloat() + other.toFloat());
+    Fixed result;
+
+    result.value = this->value + other.value;
+    return result;
 }
 
 Fixed Fixed::operator-(const Fixed &other) const{
-    return Fixed(this->toFloat() - other.toFloat());
+    Fixed result;
+
+    result.value = this->value - other.value;
+    return result;
 }
 
 Fixed Fixed::operator*(const Fixed &other) const{
-    return Fixed(this->toFloat() * other.toFloat());
+    Fixed result;
+
+    result.value = (static_cast<long long>(this->value) * other.value) >> this->fractional_bits; // to maintain the fixed point representation, since we are multiplying two fixed point numbers, we need to shift the result back by the number of fractional bits
+    return result;
 }
 
 Fixed Fixed::operator/(const Fixed &other) const{
     if(other.toFloat() == 0)
         return Fixed(0);
-    return Fixed(this->toFloat() / other.toFloat());
+    
+    Fixed result;
+    result.value = (static_cast<long long>(this->value) << this->fractional_bits) / other.value; // same as above, the numerator is in fixed point representation, so we need to scale it up by the number of fractional bits to maintain the fixed point representation
+    return result;
 }
 
 //Pre and post increment and decrement operators
