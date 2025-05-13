@@ -88,8 +88,7 @@ void ClapTrap::setHitpoints(int hitpoints){
         std::cout << "Hitpoints cannot be negative" << std::endl;
         return;
     }
-    else
-    if (hitpoints > 10){
+    else if (hitpoints > 10){
         std::cout << "Hitpoints cannot be greater than 10" << std::endl;
         return;
     }
@@ -101,8 +100,7 @@ void ClapTrap::setEnergypoints(int energypoints){
         std::cout << "Energy points cannot be negative" << std::endl;
         return;
     }
-    else
-    if (energypoints > 10){
+    else if (energypoints > 10){
         std::cout << "Energy points cannot be greater than 10" << std::endl;
         return;
     }

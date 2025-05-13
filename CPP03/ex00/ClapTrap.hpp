@@ -21,7 +21,7 @@ class ClapTrap{
         void setHitpoints(int hitpoints);
         void setEnergypoints(int energypoints);
         void setAttackdamage(int attackdamage);
-        std::string getName() const;
+        std::string getName() const; //or should it be const std::string& getName() const
         int getHitpoints() const;
         int getEnergypoints() const;
         int getAttackdamage() const;

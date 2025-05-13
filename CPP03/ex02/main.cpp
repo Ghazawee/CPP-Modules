@@ -22,7 +22,9 @@ int main() {
     std::cout << "\n-- Energy drain --\n";
     for (int i = 0; i < 101; ++i)
         fraggy.attack("DrainBot");
-
+    fraggy.takeDamage(50);
+    fraggy.takeDamage(50);
+    fraggy.takeDamage(50);
     std::cout << "\n-- End of test --\n";
     return 0;
 }

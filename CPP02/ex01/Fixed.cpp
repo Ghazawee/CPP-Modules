@@ -6,7 +6,7 @@ Fixed::Fixed(): value(0) {
 
 Fixed::Fixed(const Fixed &other){
     std::cout << "Copy constructor called" << std::endl;
-    *this = other; // to match subject example maybe i need to change ex00 aswell
+    *this = other;
 }
 
 Fixed &Fixed::operator=(const Fixed &other){
@@ -20,7 +20,7 @@ Fixed::Fixed(const int val) : value(val << this->fractional_bits){
     std::cout << "Int constructor called" << std::endl;
 }
 
-//we cant bitshift float, so we multiply it by 2^8 to get the fixed point representation and round it to the nearest integer
+
 Fixed::Fixed(const float val) : value(roundf(val * (1 << this->fractional_bits))){
     std::cout << "Float constructor called" << std::endl;
 }
