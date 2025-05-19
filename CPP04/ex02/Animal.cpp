@@ -4,10 +4,6 @@ Animal::Animal(){
     std::cout << "Default Animal Constructor called" << std::endl;
 }
 
-Animal::Animal(std::string type) : type(type){
-    std::cout << "Animal Constructor called" << std::endl;
-}
-
 Animal::Animal(const Animal &other){
     std::cout << "Animal copy constructor called" << std::endl;
     this->type = other.type;
@@ -32,7 +28,3 @@ const std::string Animal::getType() const{
 void Animal::setType(std::string type){
     this->type = type;
 }
-
-// Brain* Animal::getBrain() const{
-//     return nullptr;
-// }

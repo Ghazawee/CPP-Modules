@@ -13,7 +13,7 @@ DEL = rm -rf
 
 all: $(NAME)
 
-%.o: %.cpp
+%.o: %.cpp %.hpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)

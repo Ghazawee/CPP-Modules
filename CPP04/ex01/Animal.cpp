@@ -4,9 +4,6 @@ Animal::Animal(){
     std::cout << "Default Animal Constructor called" << std::endl;
 }
 
-Animal::Animal(std::string type) : type(type){
-    std::cout << "Animal Constructor called" << std::endl;
-}
 
 Animal::Animal(const Animal &other){
     std::cout << "Animal copy constructor called" << std::endl;
@@ -36,7 +33,3 @@ void Animal::setType(std::string type){
 void Animal::makeSound() const{
     std::cout << "Animal has made an animal sound" << std::endl;
 }
-
-// Brain* Animal::getBrain() const{
-//     return nullptr;
-// }

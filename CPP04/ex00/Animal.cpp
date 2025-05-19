@@ -4,10 +4,6 @@ Animal::Animal(){
     std::cout << "Default Animal Constructor called" << std::endl;
 }
 
-Animal::Animal(std::string type) : type(type){
-    std::cout << "Animal Constructor called" << std::endl;
-}
-
 Animal::Animal(const Animal &other){
     std::cout << "Animal copy constructor called" << std::endl;
     this->type = other.type;

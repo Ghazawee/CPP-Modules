@@ -4,10 +4,6 @@ WrongAnimal::WrongAnimal(){
     std::cout << "Default WrongAnimal Constructor called" << std::endl;
 }
 
-WrongAnimal::WrongAnimal(std::string type) : type(type){
-    std::cout << "WrongAnimal Constructor called" << std::endl;
-}
-
 WrongAnimal::WrongAnimal(const WrongAnimal &other){
     std::cout << "WrongAnimal copy constructor called" << std::endl;
     this->type = other.type;

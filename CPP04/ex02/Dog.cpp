@@ -1,28 +1,30 @@
 #include "Dog.hpp"
 
-Dog::Dog(): Animal("Dog"), brain(new Brain()){
+Dog::Dog(): Animal(), brain(new Brain()){
     std::cout << "Default Dog Constructor called" << std::endl;
-    // this->brain = new Brain(); // maybe i should do this in the constructor
+    this->type = "Dog";
 }
 
 Dog::Dog(const Dog& other) : Animal(other){
-    std::cout << "Dog copy constructor called" << std::endl;
     brain = new Brain(*other.brain);
+    this->type = other.type;
+    std::cout << "Dog copy constructor called" << std::endl;
 }
 
 Dog &Dog::operator=(const Dog& other){
-    std::cout << "Dog copy assignment constructor called" << std::endl;
     if(this != &other){
         Animal::operator=(other);
         delete brain;
         brain = new Brain(*other.brain);
+        this->type = other.type;
     }
+    std::cout << "Dog copy assignment constructor called" << std::endl;
     return *this;
 }
 
 Dog::~Dog(){
-    delete brain; // should i print the message first then call delete ??
     std::cout << "Dog Destructor called" << std::endl;
+    delete brain; // should i print the message first then call delete ??
 }
 
 const std::string Dog::getType() const{
