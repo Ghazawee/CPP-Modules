@@ -12,7 +12,6 @@ AForm::AForm(const AForm& other) : _name(other._name), isSigned(other.isSigned),
 AForm& AForm::operator=(const AForm& other) {
     if (this != &other){
         this->isSigned = other.isSigned;
-        // _name, _signGrade, and _executeGrade are const, so they cannot be assigned
     }
     return *this;
 }
@@ -50,7 +49,7 @@ std::ostream& operator<<(std::ostream& out, const AForm& form){
     out << "Name of the AForm: " << form.getName() << "\n";
     out << "Is the AForm signed? " << (form.getIsSigned() ? "YES" : "NO") <<"\n";
     out << "Sign Grade: " << form.getSignGrade() << "\n";
-    out << "Execute Grade: " << form.getExecuteGrade() << "\n"; //\n looks weird might change to endl later
+    out << "Execute Grade: " << form.getExecuteGrade() << "\n";
     return out;
 }
 

@@ -4,59 +4,59 @@
 int main() {
     std::cout << "=== Testing Bureaucrat ===" << std::endl;
     
-    // Test 1: Normal creation
+   
     try {
         Bureaucrat bob("Bob", 75);
         std::cout << bob << std::endl;
     } catch (const std::exception& e) {
-        std::cout << "Error: " << e.what() << std::endl;
+        std::cerr << "Error: " << e.what() << std::endl;
     }
     
-    // Test 2: Grade too high
+ 
     try {
-        Bureaucrat alice("Alice", 0); // Should throw
+        Bureaucrat alice("Alice", 0); 
         std::cout << alice << std::endl;
     } catch (const std::exception& e) {
-        std::cout << "Error: " << e.what() << std::endl;
+        std::cerr << "Error: " << e.what() << std::endl;
     }
     
-    // Test 3: Grade too low
+  
     try {
-        Bureaucrat charlie("Charlie", 151); // Should throw
+        Bureaucrat charlie("Charlie", 151); 
         std::cout << charlie << std::endl;
     } catch (const std::exception& e) {
-        std::cout << "Error: " << e.what() << std::endl;
+        std::cerr << "Error: " << e.what() << std::endl;
     }
     
-    // Test 4: Increment/Decrement
+   
     try {
         Bureaucrat diana("Diana", 2);
         std::cout << diana << std::endl;
         
-        diana.incrementGrade(); // Should work (grade becomes 1)
+        diana.incrementGrade();
         std::cout << "After increment: " << diana << std::endl;
         
-        diana.incrementGrade(); // Should throw (can't go below 1)
+        diana.incrementGrade();
         std::cout << "This shouldn't print" << std::endl;
     } catch (const std::exception& e) {
-        std::cout << "Error: " << e.what() << std::endl;
+        std::cerr << "Error: " << e.what() << std::endl;
     }
     
-    // Test 5: Decrement at boundary
+    
     try {
         Bureaucrat eve("Eve", 149);
         std::cout << eve << std::endl;
         
-        eve.decrementGrade(); // Should work (grade becomes 150)
+        eve.decrementGrade(); 
         std::cout << "After decrement: " << eve << std::endl;
         
-        eve.decrementGrade(); // Should throw (can't go above 150)
+        eve.decrementGrade(); 
         std::cout << "This shouldn't print" << std::endl;
     } catch (const std::exception& e) {
-        std::cout << "Error: " << e.what() << std::endl;
+        std::cerr << "Error: " << e.what() << std::endl;
     }
     
-    // Test 6: Copy constructor and assignment
+
     try {
         Bureaucrat original("Original", 42);
         Bureaucrat copy(original);
@@ -67,7 +67,7 @@ int main() {
         std::cout << "Copy: " << copy << std::endl;
         std::cout << "Assigned: " << assigned << std::endl;
     } catch (const std::exception& e) {
-        std::cout << "Error: " << e.what() << std::endl;
+        std::cerr << "Error: " << e.what() << std::endl;
     }
     
     return 0;

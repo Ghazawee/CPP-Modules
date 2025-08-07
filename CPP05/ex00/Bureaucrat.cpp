@@ -35,15 +35,6 @@ void Bureaucrat::decrementGrade(){
     }
     _grade++;
 }
-void Bureaucrat::setGrade(int grade){
-    if (grade < 1){
-        throw GradeTooHighException();
-    }
-    else if(grade > 150){
-        throw GradeTooLowException();
-    }
-    _grade = grade;
-}
 
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& bur){
     out << bur.getName() << ", bureaucrat grade " << bur.getGrade();

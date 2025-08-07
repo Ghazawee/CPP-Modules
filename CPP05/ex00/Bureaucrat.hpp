@@ -27,7 +27,6 @@ class Bureaucrat{
                 const char* what() const throw();
 
         };
-        void setGrade(int grade); // maybe remove this later, not needed for now
 
 };
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& bur);

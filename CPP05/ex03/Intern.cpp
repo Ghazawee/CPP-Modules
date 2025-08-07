@@ -14,7 +14,6 @@ Intern& Intern::operator=(const Intern& other){
     return *this;
 }
 AForm* Intern::makeForm(const std::string& formName, const std::string& target){
-    //shouldnt use if else, use switch case instead
 
     std::string forms[3] = {"shrubbery creation", "robotomy request", "presidential pardon"};
     int g = 0;
@@ -24,7 +23,6 @@ AForm* Intern::makeForm(const std::string& formName, const std::string& target){
         }
         g++;
     }
-    try{
         switch(g){
             case 0:
                 std::cout << "Intern creates " << formName << std::endl;
@@ -36,12 +34,9 @@ AForm* Intern::makeForm(const std::string& formName, const std::string& target){
                 std::cout << "Intern creates " << formName << std::endl;
                 return new PresidentialPardonForm(target);
             default:
+                std::cerr <<"Intern couldnt create form ";
                 throw UnknownFormException();
         }
-    }catch (const UnknownFormException& e){
-        std::cerr <<"Intern couldnt make form because: " <<e.what() << std::endl;
-        return NULL;
-    }
 }
 const char* Intern::UnknownFormException::what() const throw(){
     return "Unknown form type!";

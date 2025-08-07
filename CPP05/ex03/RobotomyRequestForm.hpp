@@ -2,7 +2,7 @@
 #define ROBOTOMYREQUESTFORM_HPP
 
 #include "AForm.hpp"
-#include <cstdlib>  // for rand(), srand()
+#include <cstdlib> 
 class RobotomyRequestForm : public AForm {
     private:
         std::string _target;
