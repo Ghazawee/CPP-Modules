@@ -3,10 +3,7 @@
 int main() {
     std::cout << "\n-- Creating gaz the ScavTrap --" << std::endl;
     ScavTrap gaz("gaz");
-    ScavTrap def;
 
-    gaz.setHitpoints(101);
-    gaz.setAttackdamage(50);
     std::cout << "\n-- Attacking a target --" << std::endl;
     gaz.attack("TargetBot");
 

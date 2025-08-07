@@ -4,11 +4,10 @@ int main() {
     ClapTrap a("Gaz");
     ClapTrap b("Bot");
 
-    a.setAttackdamage(15);
 
     std::cout << "\n--- Basic Attack ---\n";
     a.attack("Bot");
-    b.takeDamage(a.getAttackdamage());
+    b.takeDamage(0);
 
     std::cout << "\n--- Gaz uses all energy ---\n";
     for (int i = 0; i < 10; ++i)
