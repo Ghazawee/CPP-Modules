@@ -66,14 +66,10 @@ void printInt(int value){
 }
 
 void printFloat(float value){
-    // std::cout << std::fixed << std::setprecision(1);
-    //infinity and NaN handling
     if (std::isnan(value))
         std::cout << "float: nanf" << std::endl;
     else if (std::isinf(value))
         std::cout << "float: " << (value > 0 ? "+inff" : "-inff") << std::endl;
-    // else if (value == -std::numeric_limits<float>::infinity())
-    //     std::cout << "float: -inff" << std::endl;
     else{
         std::cout << "float: " << value ;
         if (value == static_cast<int>(value))
@@ -84,15 +80,10 @@ void printFloat(float value){
 }
 
 void printDouble(double value){
-    // std::cout << std::fixed << std::setprecision(1);
     if (std::isnan(value))
         std::cout << "double: nan" << std::endl;
     else if (std::isinf(value))
         std::cout << "double: " << (value > 0 ? "+inf" : "-inf") << std::endl;
-    // else if (value == std::numeric_limits<double>::infinity())
-    //     std::cout << "double: +inf" << std::endl;
-    // else if (value == -std::numeric_limits<double>::infinity())
-    //     std::cout << "double: -inf" << std::endl;
     else{
         std::cout << "double: " << value ;
         if (value == static_cast<int>(value))
@@ -118,7 +109,7 @@ void convertfromchar(char c){
 
 void convertfromint(int n){
     if (n >= 0 && n <= 127){
-        if (isprint(n))
+        if (std::isprint(n))
             printChar(static_cast<char>(n));
         else
             std::cout << "char: Non displayable" << std::endl;
@@ -133,7 +124,7 @@ void convertfromint(int n){
 
 void convertfromfloat(float f){
     if (f >= 0 && f <= 127){
-        if (isprint(static_cast<int>(f)))
+        if (std::isprint(static_cast<int>(f)))
             printChar(static_cast<char>(f));
         else
             std::cout << "char: Non displayable" << std::endl;
@@ -152,7 +143,7 @@ void convertfromfloat(float f){
 
 void convertfromdouble(double d){
     if (d >= 0 && d <= 127){
-        if (isprint(static_cast<int>(d)))
+        if (std::isprint(static_cast<int>(d)))
             printChar(static_cast<char>(d));
         else
             std::cout << "char: Non displayable" << std::endl;
@@ -173,7 +164,7 @@ void ScalarConverter::convert(const std::string& literal){
     if (isChar(literal))
         convertfromchar(literal[0]);
     else if (isInt(literal)){
-        int n = strtol(literal.c_str(), 0, 10);
+        int n = std::strtol(literal.c_str(), 0, 10);
         convertfromint(n);
     }
     else if (isFloat(literal)){

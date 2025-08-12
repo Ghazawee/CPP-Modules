@@ -2,10 +2,7 @@
 #define SCALARCONVERTER_HPP
 
 #include <iostream>
-#include <string>
-#include <limits>
 #include <cmath>
-#include <iomanip>
 #include <climits>
 #include <cstdlib>
 #include <cfloat>

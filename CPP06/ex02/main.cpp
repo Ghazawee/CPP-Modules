@@ -29,17 +29,17 @@ void identify(Base* p){
 
 void identify(Base& p){
     try{
-        dynamic_cast<A&>(p);
+        static_cast<void>(dynamic_cast<A&>(p));
         std::cout << "I identify as an A type" << std::endl;
         return;
     }catch (std::exception&){}
     try{
-        dynamic_cast<B&>(p);
+        static_cast<void>(dynamic_cast<B&>(p));
         std::cout << "I identify as a B type" << std::endl;
         return;
     }catch (std::exception&){}
     try{
-        dynamic_cast<C&>(p);
+        static_cast<void>(dynamic_cast<C&>(p));
         std::cout << "I identify as a C type" << std::endl;
         return;
     }catch (std::exception&){}
@@ -50,7 +50,6 @@ void identify(Base& p){
 
 int main() {
     Base* a = generate();
-    //do i need to check if a is NULL?
 
     std::cout << "====================================================" << std::endl;
     std::cout << "Test with pointer:" << std::endl;
