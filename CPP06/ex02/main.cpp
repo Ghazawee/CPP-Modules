@@ -29,17 +29,20 @@ void identify(Base* p){
 
 void identify(Base& p){
     try{
-        static_cast<void>(dynamic_cast<A&>(p));
+        A& a = (dynamic_cast<A&>(p));
+        (void)a;
         std::cout << "I identify as an A type" << std::endl;
         return;
     }catch (std::exception&){}
     try{
-        static_cast<void>(dynamic_cast<B&>(p));
+        B& b = (dynamic_cast<B&>(p));
+        (void)b;
         std::cout << "I identify as a B type" << std::endl;
         return;
     }catch (std::exception&){}
     try{
-        static_cast<void>(dynamic_cast<C&>(p));
+        C& c = (dynamic_cast<C&>(p));
+        (void)c;
         std::cout << "I identify as a C type" << std::endl;
         return;
     }catch (std::exception&){}
@@ -50,6 +53,10 @@ void identify(Base& p){
 
 int main() {
     Base* a = generate();
+    if (!a) {
+        std::cerr << "Failed to generate a Base type." << std::endl;
+        return 1;
+    }
 
     std::cout << "====================================================" << std::endl;
     std::cout << "Test with pointer:" << std::endl;
