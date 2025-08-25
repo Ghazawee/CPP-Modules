@@ -21,6 +21,12 @@ class Span{
         void addNumber(int number);
         int shortestSpan();
         int longestSpan();
+        template<typename Iter>
+        void addNumbers(Iter begin, Iter end){
+            if (_arr.size() + std::distance(begin, end) > _size)
+                throw std::runtime_error("Not enough space in container");
+            _arr.insert(_arr.end(), begin, end);
+        }
 };
 
 

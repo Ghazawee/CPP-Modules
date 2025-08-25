@@ -13,6 +13,31 @@ int main(){
 
             std::vector<int>::iterator ite =easyfind(vec, 5);
             std::cout <<"Found "<< *ite << std::endl;
+            std::cout << "Trying to find an element that isnt there:" <<std::endl;
+            ite =easyfind(vec, 70);
+            std::cout <<"Found "<< *ite << std::endl;
+
+        }catch(const std::exception&e){
+            std::cerr<< "Error: " << e.what() << std::endl;
+        }
+    }
+
+    {
+        std::cout << "\n============Const Vector Container============\n" << std::endl;
+        std::vector<int> vec;
+        vec.push_back(5);
+        vec.push_back(6);
+        vec.push_back(20);
+        vec.push_back(31);
+        const std::vector<int> constVec (vec);
+        try{
+
+            std::vector<int>::const_iterator ite =easyfind(constVec, 20);
+            std::cout <<"Found "<< *ite << std::endl;
+            std::cout << "Trying to find an element that isnt there:" <<std::endl;
+            ite =easyfind(constVec, 90);
+            std::cout <<"Found "<< *ite << std::endl;
+
         }catch(const std::exception&e){
             std::cerr<< "Error: " << e.what() << std::endl;
         }
@@ -29,6 +54,10 @@ int main(){
         try{
             std::list<int>::iterator it = easyfind(lis, 23);
             std::cout << "Found " << *it << std::endl;
+            std::cout << "Trying to find an element that isnt there:" <<std::endl;
+            it = easyfind(lis, 43);
+            std::cout <<"Found "<< *it << std::endl;
+
         }catch (const std::exception& e){
             std::cerr<< "Error: " << e.what() << std::endl;
 
