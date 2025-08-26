@@ -1,4 +1,4 @@
-#include <Span.hpp>
+#include "Span.hpp"
 
 Span::Span() : _size(0){}
 Span::Span(unsigned int N) : _size(N) {}
@@ -36,6 +36,7 @@ int Span::longestSpan(){
     if (!(_arr.size() >= 2))
         throw std::runtime_error("Minimun of 2 elements must be present");
     std::sort(_arr.begin(), _arr.end());
-    int long_span = _arr[_arr.size() -1] - _arr[0];
+    // int long_span = _arr[_arr.size() -1] - _arr[0];
+    int long_span = *std::max_element(_arr.begin(), _arr.end()) - *std::min_element(_arr.begin(), _arr.end());
     return long_span;
 }

@@ -1,5 +1,6 @@
 #include "Span.hpp"
-
+#include <cstdlib>
+#include <ctime>
 int main()
 {
     {

@@ -5,6 +5,7 @@
 #include <vector>
 #include <list>
 #include <exception>
+#include <stdexcept>
 #include <algorithm>
 
 template<typename T>
