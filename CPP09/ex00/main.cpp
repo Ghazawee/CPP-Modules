@@ -1,14 +1,5 @@
 #include "BitcoinExchange.hpp"
 
-int check_data_file(void){
-    std::ifstream infile("data.csv");
-    if (!infile){
-       throw std::runtime_error("data.csv should be in the directory");
-    }
-    std::map<std::string, float> data;
-    
-}
-
 
 int main(int ac, char **av){
     if (ac != 2){
@@ -16,16 +7,14 @@ int main(int ac, char **av){
         return 1;
     }
     try{
-        // std::ifstream infile("data.csv");
-        // if (!infile){
-        //     std::cerr << "data.csv should be in the directory" << std::endl;
-        //     return 1;
-        // }
+        BitcoinExchange btc;
+        btc.loadData("data.csv");
+        btc.processInputFile(av[1]);
+        return 0;
         
     }catch(const std::exception& e){
         std::cerr << "Error: " << e.what() << std::endl;
         return 1;
     }
-
 
 }
