@@ -4,10 +4,19 @@
 #include <iostream>
 #include <stack>
 #include <sstream>
+#include <cstdlib>
+#include <stdexcept>
+#include <algorithm>
+#include <cctype>
+#include <climits>
+#include <cmath>
+#include <climits>
+#include <cstdlib>
+#include <cfloat>
 
 class RPN{
     private:
-        std::stack<int> container;
+        std::stack<long double> container;
     public:
         RPN();
         ~RPN();
@@ -16,7 +25,7 @@ class RPN{
 
         void push(int value);
         void pop();
-        int top() const;
+        long double top() const;
         bool isEmpty() const;
         size_t size() const;
         void add();
