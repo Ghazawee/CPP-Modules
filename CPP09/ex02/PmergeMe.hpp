@@ -19,7 +19,8 @@ class PmergeMe{
     private:
         std::vector<int> vec;
         std::deque<int> deq;
-        std::vector<size_t> generateJacobsSeq(size_t size);
+        std::vector<size_t> generateJacobsSeqVec(size_t size);
+        std::deque<size_t> generateJacobsSeqDeq(size_t size);
         void FordJohnsonSortVec(std::vector<int>& arr);
         void FordJohnsonSortDeq(std::deque<int>& arr);
     public:
