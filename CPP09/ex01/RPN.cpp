@@ -74,27 +74,10 @@ bool RPN::isInt(const std::string& str){
     if (str.empty() || !std::isdigit(str[0]))
         return false;
     char* end;
-    int value = std::strtol(str.c_str(), &end, 10);
+    long value = std::strtol(str.c_str(), &end, 10);
     if (*end != '\0')
         return false;
     (void) value;
-    // if (value < INT_MIN || value > INT_MAX)
-    //     return false;
-    return true;
-}
-
-bool isDouble(const std::string& str){
-    // if (str == "nan" || str == "inf"||str == "+inf" || str == "-inf")
-    //     return true;
-    if (str.empty())
-        return false;
-    char *end;
-    double value = std::strtod(str.c_str(), &end);
-    if (*end != '\0')
-        return false;
-    (void) value;
-    // if (value < -DBL_MAX || value > DBL_MAX)
-    //     return false;
     return true;
 }
 
@@ -103,7 +86,6 @@ void RPN::evaluate(const std::string& argument){
     std::string token;
     while (iss >> token){
         if(token == "+" || token == "-" || token == "*" || token == "/"){
-            // try{
                 if (token == "+")
                     add();
                 else if (token == "-")
@@ -112,18 +94,14 @@ void RPN::evaluate(const std::string& argument){
                     multiply();
                 else if (token == "/")
                     divide();
-            // }catch(const std::exception& e){}
             }
             else{
-                if (isInt(token)){ // or it can be else if (isInt(token)) else throw
-                // if(isDouble(token)){
+                if (isInt(token)){ 
                     long double value;
                     std::stringstream ss(token);
                     ss >> value;
                     if (value < 0 || value > 9)
                         throw std::runtime_error("Error: invalid token " + token);
-                    // if (value > INT_MAX)
-
                     push(value);
                 }
                 else{

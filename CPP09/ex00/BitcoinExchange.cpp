@@ -43,6 +43,7 @@ void BitcoinExchange::loadData(const std::string& filename){
     }
     std::string line;
     std::getline(infile, line);
+    //maybe trim header before checking
     if (line != "date,exchange_rate"){
         throw std::runtime_error("Invalid header in " + filename);
     }

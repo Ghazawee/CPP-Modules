@@ -37,34 +37,26 @@ void PmergeMe::sortAndDisplay(){
         std::cout << *itv << " ";
     }
     std::cout << std::endl;
-    //measure time
     clock_t vecStart = clock();
     FordJohnsonSortVec(vec);
     clock_t vecEnd = clock();
-    double vecTime = double(vecEnd - vecStart) / CLOCKS_PER_SEC ; //in microseconds
-    //end time
+    double vecTime = double(vecEnd - vecStart) / CLOCKS_PER_SEC * 1000000; //in microseconds
     
     clock_t deqStart = clock();
     FordJohnsonSortDeq(deq);
     clock_t deqEnd = clock();
-    double deqTime = double(deqEnd - deqStart) / CLOCKS_PER_SEC ; //in microseconds
+    double deqTime = double(deqEnd - deqStart) / CLOCKS_PER_SEC * 1000000; //in microseconds
     
     std::cout << "Vector after sorting: ";
     for (itv = vec.begin(); itv != vec.end(); ++itv){
         std::cout << *itv << " ";
     }
     std::cout << std::endl;
-    // std::deque<int>::iterator itq;
-    // std::cout << "Deq after sorting: ";
-    // for (itq = deq.begin(); itq != deq.end(); ++itq){
-    //     std::cout << *itq << " ";
-    // }
-    std::cout << std::endl;
     if (vecCopy.size() != vec.size() || vecCopy.size() != deq.size()){
         throw std::runtime_error("Error: Sorting failed, size mismatch.");
     }
-    std::cout << "Time to process a range of " << vec.size() << " elements with std::vector : " << vecTime << " s" << std::endl;
-    std::cout << "Time to process a range of " << deq.size() << " elements with std::deque : " << deqTime << " s" << std::endl;
+    std::cout << "Time to process a range of " << vec.size() << " elements with std::vector : " << vecTime << " us"<< std::endl;
+    std::cout << "Time to process a range of " << deq.size() << " elements with std::deque : " << deqTime << " us" << std::endl;
 }
 
 void PmergeMe::createSortedPairsVec(const std::vector<std::pair<int, int> >& pairs,const std::vector<int>& mainChain, std::vector<std::pair<int,int> >& sortedPairs){
@@ -129,7 +121,7 @@ void PmergeMe::FordJohnsonSortVec(std::vector<int>& arr){
     for (size_t i = 0; i < pairs.size(); ++i){
         largeElements.push_back(pairs[i].second);
     }
-
+      
     FordJohnsonSortVec(largeElements);
     std::vector<int> mainChain = largeElements;
     std::vector<std::pair<int, int> > sortedPairs;
@@ -141,23 +133,13 @@ void PmergeMe::FordJohnsonSortVec(std::vector<int>& arr){
         std::vector<int>::iterator posB0 = boundByPartnerVec(mainChain, posA0, B0);
         mainChain.insert(posB0, B0);
     }
-    // int smallElem = pairs[0].first;
-    // std::vector<int>::iterator smallElemIt = std::lower_bound(mainChain.begin(), mainChain.end(), smallElem);
-    // mainChain.insert(smallElemIt, smallElem);
-
 
     std::vector<size_t> jacobsSeq = generateJacobsSeqVec(sortedPairs.size());
-    std::cout << "Jacobs sequence: ";
-    for (size_t i = 0; i < jacobsSeq.size(); ++i){
-        std::cout << jacobsSeq[i] << " ";
-    }
-    std::cout << std::endl;
     std::vector<size_t> insertionOrder;
     for (size_t i = 1; i < jacobsSeq.size(); i++){
         for(size_t j = jacobsSeq[i]; j > jacobsSeq[i - 1]; j--){
             if (j < sortedPairs.size()){
                 insertionOrder.push_back(j);
-                std::cout << "insertionOrder: " << j << std::endl;
             }
         }
     }
@@ -165,7 +147,6 @@ void PmergeMe::FordJohnsonSortVec(std::vector<int>& arr){
     size_t last = jacobsSeq.empty() ? 0 : jacobsSeq.back();
     for (size_t j = sortedPairs.size() -1; j > last; j--){
         insertionOrder.push_back(j);
-        std::cout << "insertionOrder tail: " << j << std::endl;
     }
  
     for (size_t i = 0; i < insertionOrder.size(); ++i){
@@ -174,26 +155,18 @@ void PmergeMe::FordJohnsonSortVec(std::vector<int>& arr){
         int B = sortedPairs[idx].first;
         std::vector<int>::iterator posA = std::lower_bound(mainChain.begin(), mainChain.end(), A);
         std::vector<int>::iterator posB = boundByPartnerVec(mainChain, posA, B);
-        std::cout << "Inserting element: " << B << " at position " << (posB - mainChain.begin()) << std::endl;
 
         mainChain.insert(posB, B);
-        // int element = pairs[insertionOrder[i]].first;
-        // std::cout << "Inserting element: " << element << std::endl;
-        // std::vector<int>::iterator posToInsert = std::lower_bound(mainChain.begin(), mainChain.end(), element);
-        // mainChain.insert(posToInsert, element);
-
     }
 
     if (hasBlackSheep){
         std::vector<int>::iterator posToInsert = std::lower_bound(mainChain.begin(), mainChain.end(), blackSheep);// if it doesnt find 
-        //to view what is the index where it is inserted
-        std::cout << "Inserting black sheep: " << blackSheep << " at position " << (posToInsert - mainChain.begin()) << std::endl;
         mainChain.insert(posToInsert, blackSheep);
         
     }
-    for (size_t i = 1; i < mainChain.size(); ++i){
-        assert(mainChain[i - 1] <= mainChain[i]);
-    }
+    // for (size_t i = 1; i < mainChain.size(); ++i){
+    //     assert(mainChain[i - 1] <= mainChain[i]);
+    // }
     arr = mainChain;
 }
 
