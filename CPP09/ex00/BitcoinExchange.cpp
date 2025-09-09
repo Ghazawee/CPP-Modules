@@ -44,6 +44,16 @@ void BitcoinExchange::loadData(const std::string& filename){
     std::string line;
     std::getline(infile, line);
     //maybe trim header before checking
+    size_t pos = line.find(',');
+    if (pos == std::string::npos){
+        throw std::runtime_error("Invalid header in " + filename);
+    }
+    std::string date = line.substr(0, pos);
+    date = trim(date, " \t\r");
+    std::string valueStr = line.substr(pos + 1);
+    valueStr = trim(valueStr, " \t\r");
+    // line.clear();
+    line = date + "," + valueStr;
     if (line != "date,exchange_rate"){
         throw std::runtime_error("Invalid header in " + filename);
     }
@@ -53,7 +63,9 @@ void BitcoinExchange::loadData(const std::string& filename){
             continue;
         }
         std::string date = line.substr(0, commaPos);
+        date = trim(date, " \t\r");
         std::string valueStr = line.substr(commaPos + 1);
+        valueStr = trim(valueStr, " \t\r");
         std::stringstream ss(valueStr);
         float rate;
         ss >> rate;
@@ -94,6 +106,16 @@ void BitcoinExchange::processInputFile(const std::string& filename)const{
     }
     std::string line;
     std::getline(infile, line);
+    size_t pos = line.find('|');
+    if (pos == std::string::npos){
+        throw std::runtime_error("Invalid header in " + filename);
+    }
+    std::string date = line.substr(0, pos);
+    date = trim(date, " \t\r");
+    std::string valueStr = line.substr(pos + 1);
+    valueStr = trim(valueStr, " \t\r");
+    // line.clear();
+    line = date + " | " + valueStr;
     if (line != "date | value"){
         throw std::runtime_error("Invalid header in " + filename);
     }

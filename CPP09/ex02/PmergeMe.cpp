@@ -1,5 +1,4 @@
 #include "PmergeMe.hpp"
-#include <cassert>
 
 PmergeMe::PmergeMe(){}
 PmergeMe::~PmergeMe(){}
@@ -164,9 +163,6 @@ void PmergeMe::FordJohnsonSortVec(std::vector<int>& arr){
         mainChain.insert(posToInsert, blackSheep);
         
     }
-    // for (size_t i = 1; i < mainChain.size(); ++i){
-    //     assert(mainChain[i - 1] <= mainChain[i]);
-    // }
     arr = mainChain;
 }
 
