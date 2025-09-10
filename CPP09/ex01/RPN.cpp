@@ -81,6 +81,16 @@ bool RPN::isInt(const std::string& str){
     return true;
 }
 
+size_t RPN::getResultSize() const{
+    return container.size();
+}
+long double RPN::getResult() const{
+    if (container.size() != 1){
+        throw std::runtime_error("Error: The user input has too many values.");
+    }
+    return container.top();
+}
+
 void RPN::evaluate(const std::string& argument){
     std::istringstream iss(argument);
     std::string token;

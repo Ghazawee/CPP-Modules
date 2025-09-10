@@ -9,11 +9,11 @@ int main(int ac, char **av){
     try{
         RPN rpn;
         rpn.evaluate(av[1]);
-        if (rpn.size() != 1){
+        if (rpn.getResultSize() != 1){
             std::cerr << "Error: The user input has too many values." << std::endl;
             return 1;
         }
-        std::cout << rpn.top() << std::endl;
+        std::cout << rpn.getResult() << std::endl;
         return 0;   
     }catch(const std::exception& e){
         std::cerr << e.what() << std::endl;

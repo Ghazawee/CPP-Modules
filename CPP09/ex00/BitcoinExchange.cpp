@@ -43,7 +43,6 @@ void BitcoinExchange::loadData(const std::string& filename){
     }
     std::string line;
     std::getline(infile, line);
-    //maybe trim header before checking
     size_t pos = line.find(',');
     if (pos == std::string::npos){
         throw std::runtime_error("Invalid header in " + filename);
@@ -52,7 +51,6 @@ void BitcoinExchange::loadData(const std::string& filename){
     date = trim(date, " \t\r");
     std::string valueStr = line.substr(pos + 1);
     valueStr = trim(valueStr, " \t\r");
-    // line.clear();
     line = date + "," + valueStr;
     if (line != "date,exchange_rate"){
         throw std::runtime_error("Invalid header in " + filename);
@@ -69,7 +67,6 @@ void BitcoinExchange::loadData(const std::string& filename){
         std::stringstream ss(valueStr);
         float rate;
         ss >> rate;
-        //check if valid date and value then store it
         if (isValidDate(date) && !ss.fail() && ss.eof()){
             data[date] = rate;
         }
@@ -125,7 +122,7 @@ void BitcoinExchange::processInputFile(const std::string& filename)const{
             std::cerr << "Error: bad input => " << line << std::endl;
             continue;
         }
-        std::string date = line.substr(0, pipePos); // if the format should always be "date | value" with spaces around '|' i need to do pipePos - 1 else just pipePos// or maybe use find then trim spaces
+        std::string date = line.substr(0, pipePos);
         date = trim(date, " \t\r");
         std::string valueStr = line.substr(pipePos + 1);
         valueStr = trim(valueStr, " \t\r");

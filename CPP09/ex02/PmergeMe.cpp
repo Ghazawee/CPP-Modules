@@ -39,21 +39,18 @@ void PmergeMe::sortAndDisplay(){
     clock_t vecStart = clock();
     FordJohnsonSortVec(vec);
     clock_t vecEnd = clock();
-    double vecTime = double(vecEnd - vecStart) / CLOCKS_PER_SEC * 1000000; //in microseconds
+    double vecTime = double(vecEnd - vecStart) / CLOCKS_PER_SEC * 1000000;
     
     clock_t deqStart = clock();
     FordJohnsonSortDeq(deq);
     clock_t deqEnd = clock();
-    double deqTime = double(deqEnd - deqStart) / CLOCKS_PER_SEC * 1000000; //in microseconds
+    double deqTime = double(deqEnd - deqStart) / CLOCKS_PER_SEC * 1000000;
     
     std::cout << "Vector after sorting: ";
     for (itv = vec.begin(); itv != vec.end(); ++itv){
         std::cout << *itv << " ";
     }
     std::cout << std::endl;
-    if (vecCopy.size() != vec.size() || vecCopy.size() != deq.size()){
-        throw std::runtime_error("Error: Sorting failed, size mismatch.");
-    }
     std::cout << "Time to process a range of " << vec.size() << " elements with std::vector : " << vecTime << " us"<< std::endl;
     std::cout << "Time to process a range of " << deq.size() << " elements with std::deque : " << deqTime << " us" << std::endl;
 }

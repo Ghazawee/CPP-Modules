@@ -4,25 +4,14 @@
 #include <iostream>
 #include <stack>
 #include <sstream>
-#include <cstdlib>
 #include <stdexcept>
 #include <algorithm>
-#include <cctype>
-#include <climits>
-#include <cmath>
-#include <climits>
-#include <cstdlib>
-#include <cfloat>
+
 
 class RPN{
     private:
         std::stack<long double> container;
-    public:
-        RPN();
-        ~RPN();
-        RPN(const RPN& other);
-        RPN& operator=(const RPN& other);
-
+        bool isInt(const std::string& str);
         void push(int value);
         void pop();
         long double top() const;
@@ -32,9 +21,15 @@ class RPN{
         void subtract();
         void multiply();
         void divide();
-        //need function to evaluate expression from string and store result in stack
+    public:
+        RPN();
+        ~RPN();
+        RPN(const RPN& other);
+        RPN& operator=(const RPN& other);
+
+        size_t getResultSize() const;
+        long double getResult() const;
         void evaluate(const std::string& argument);
-        bool isInt(const std::string& str);
 
 };
 
